@@ -21,8 +21,10 @@ class Programa:
   def nome(self, nome):
     self._nome = nome.title()
 
-  def imprime(self):
-    print(f'Nome: {self.nome} - Likes: {vingadores.likes}')
+  def __str__(self):
+    return f'Nome: {self.nome} - Likes: {vingadores.likes}'
+  def __repr__(self):
+    return f'Nome: {self.nome} - Likes: {vingadores.likes}'
 
 
 class Filme(Programa):
@@ -32,16 +34,16 @@ class Filme(Programa):
     super().__init__(nome,ano)
     self.duracao = duracao
 
-  def imprime(self):
-    print(f'Nome: {self.nome} - Duracao: {self.duracao} min - Likes: {vingadores.likes}')
+  def __str__(self):
+    return f'Nome: {self.nome} - Duracao: {self.duracao} min - Likes: {vingadores.likes}'
 
 class Serie(Programa):
   def __init__(self, nome, ano, temporadas):
     super().__init__(nome,ano)
     self.temporadas = temporadas
 
-  def imprime(self):
-    print(f'Nome: {self.nome} - Temporadas: {self.temporadas} - Likes: {vingadores.likes}')
+  # def __str__(self):
+  #   return f'Nome: {self.nome} - Temporadas: {self.temporadas} - Likes: {vingadores.likes}'
 
    
 
@@ -54,12 +56,8 @@ atlanta.dar_like()
 atlanta.dar_like()
 vingadores.dar_like()
 
-# print(f'Total filmes: {Filme.total_classes}')
-# print(f'Total programas: {Programa.total_programas}')
-# print('-------------------------------------------')
 filmes_e_series = [vingadores, velozes, atlanta]
 
 for programa in filmes_e_series:
-  programa.imprime()
-  # print(str(programa))
-  print('-------------------------------------------')
+  print(programa)
+  print(repr(programa))
