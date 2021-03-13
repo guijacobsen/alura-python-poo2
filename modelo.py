@@ -22,9 +22,9 @@ class Programa:
     self._nome = nome.title()
 
   def __str__(self):
-    return f'Nome: {self.nome} - Likes: {vingadores.likes}'
-  def __repr__(self):
-    return f'Nome: {self.nome} - Likes: {vingadores.likes}'
+    return f'Nome: {self.nome} - Likes: {self.likes}'
+  # def __repr__(self):
+  #   return f'Nome: {self.nome} - Likes: {self.likes}'
 
 
 class Filme(Programa):
@@ -35,29 +35,51 @@ class Filme(Programa):
     self.duracao = duracao
 
   def __str__(self):
-    return f'Nome: {self.nome} - Duracao: {self.duracao} min - Likes: {vingadores.likes}'
+    return f'Nome: {self.nome} - Duracao: {self.duracao} min - Likes: {self.likes}'
 
 class Serie(Programa):
   def __init__(self, nome, ano, temporadas):
     super().__init__(nome,ano)
     self.temporadas = temporadas
 
-  # def __str__(self):
-  #   return f'Nome: {self.nome} - Temporadas: {self.temporadas} - Likes: {vingadores.likes}'
+  def __str__(self):
+    return f'Nome: {self.nome} - Temporadas: {self.temporadas} - Likes: {self.likes}'
 
    
+class Playlist:
+  def __init__(self, nome, programas):
+    self.nome = nome
+    self.programas = programas
+  
+  def tamanho(self):
+    return len(self.programas)
+
+
+
 
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
-velozes = Filme('valozes e furiosos', 2018, 100)
+velozes = Filme('velozes e furiosos', 2018, 100)
 atlanta = Serie('atlanta', 2018, 2)
+lucifer = Serie('lucifer', 2014, 5)
+
+lucifer.dar_like()
+lucifer.dar_like()
+lucifer.dar_like()
+lucifer.dar_like()
+lucifer.dar_like()
 
 atlanta.dar_like()
 atlanta.dar_like()
+atlanta.dar_like()
+
+velozes.dar_like()
+
+vingadores.dar_like()
+vingadores.dar_like()
 vingadores.dar_like()
 
-filmes_e_series = [vingadores, velozes, atlanta]
+filmes_e_series = [vingadores, velozes, atlanta, lucifer]
 
 for programa in filmes_e_series:
   print(programa)
-  print(repr(programa))
